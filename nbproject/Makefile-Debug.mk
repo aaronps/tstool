@@ -35,8 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/2113088342/IMG_png.o \
-	${OBJECTDIR}/_ext/2113088342/savepng.o \
+	${OBJECTDIR}/_ext/1235180888/SDL_png.o \
 	${OBJECTDIR}/_ext/1235180888/tstool.o
 
 
@@ -63,15 +62,10 @@ LDLIBSOPTIONS=
 tstool-debug.exe: ${OBJECTFILES}
 	${LINK.cc} -o tstool-debug ${OBJECTFILES} ${LDLIBSOPTIONS} -static-libgcc -static-libstdc++ -lpng -lSDL -lmingw32 -mconsole
 
-${OBJECTDIR}/_ext/2113088342/IMG_png.o: /D/prog/tstool/src/others/IMG_png.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/2113088342
+${OBJECTDIR}/_ext/1235180888/SDL_png.o: /D/prog/tstool/src/SDL_png.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1235180888
 	${RM} $@.d
-	$(COMPILE.c) -g -I/D/MinGW/include/SDL -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/2113088342/IMG_png.o /D/prog/tstool/src/others/IMG_png.c
-
-${OBJECTDIR}/_ext/2113088342/savepng.o: /D/prog/tstool/src/others/savepng.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/2113088342
-	${RM} $@.d
-	$(COMPILE.c) -g -I/D/MinGW/include/SDL -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/2113088342/savepng.o /D/prog/tstool/src/others/savepng.c
+	$(COMPILE.c) -g -I/D/MinGW/include/SDL -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1235180888/SDL_png.o /D/prog/tstool/src/SDL_png.c
 
 ${OBJECTDIR}/_ext/1235180888/tstool.o: /D/prog/tstool/src/tstool.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1235180888

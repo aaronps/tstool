@@ -5,8 +5,7 @@
  * Created on June 1, 2013, 2:19 PM
  */
 
-#include "others/IMG_png.h"
-#include "others/savepng.h"
+
 
 #include "SDL.h"
 #undef main
@@ -15,6 +14,7 @@
 
 #include <stdio.h>
 
+#include "SDL_png.h"
 
 bool miniSDLInit()
 {
