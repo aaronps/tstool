@@ -12,10 +12,12 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <logicalFolder name="others" displayName="others" projectFiles="true">
-      </logicalFolder>
       <itemPath>D:/prog/tstool/src/SDL_png.c</itemPath>
       <itemPath>D:/prog/tstool/src/SDL_png.h</itemPath>
+      <itemPath>D:/prog/tstool/src/TSTool.hpp</itemPath>
+      <itemPath>D:/prog/tstool/src/TSTool_bmp2png.cpp</itemPath>
+      <itemPath>D:/prog/tstool/src/ToolManager.cpp</itemPath>
+      <itemPath>D:/prog/tstool/src/ToolManager.hpp</itemPath>
       <itemPath>D:/prog/tstool/src/tstool.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -62,6 +64,17 @@
       </item>
       <item path="D:/prog/tstool/src/SDL_png.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="D:/prog/tstool/src/TSTool.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="D:/prog/tstool/src/TSTool_bmp2png.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/prog/tstool/src/ToolManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="D:/prog/tstool/src/ToolManager.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="D:/prog/tstool/src/tstool.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -99,6 +112,17 @@
       <item path="D:/prog/tstool/src/SDL_png.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="D:/prog/tstool/src/SDL_png.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="D:/prog/tstool/src/TSTool.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="D:/prog/tstool/src/TSTool_bmp2png.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/prog/tstool/src/ToolManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="D:/prog/tstool/src/ToolManager.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="D:/prog/tstool/src/tstool.cpp" ex="false" tool="1" flavor2="0">
       </item>

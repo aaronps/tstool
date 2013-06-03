@@ -28,8 +28,9 @@
           <runcommandpicklistitem>"${OUTPUT_PATH}" asd.txt</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" base.bmp</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" base.bmp dest.png</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" bmp2png base.bmp dest.png</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}" base.bmp dest.png</runcommand>
+        <runcommand>"${OUTPUT_PATH}" bmp2png base.bmp dest.png</runcommand>
         <rundir></rundir>
         <buildfirst>true</buildfirst>
         <terminal-type>0</terminal-type>

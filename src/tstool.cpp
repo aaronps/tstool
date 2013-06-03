@@ -13,8 +13,12 @@
 #include <windows.h>
 
 #include <stdio.h>
+#include <iostream>
 
-#include "SDL_png.h"
+#include "ToolManager.hpp"
+
+using std::vector;
+using std::string;
 
 bool miniSDLInit()
 {
@@ -32,7 +36,7 @@ bool miniSDLInit()
 
 void print_usage(const char * exe_name)
 {
-    printf("Use: %s <tileset-image-file> <dest>\n", exe_name);
+    printf("Use: %s <tool_name> <parameters>\n", exe_name);
 }
 
 /*
@@ -47,25 +51,27 @@ int main(int argc, char** argv)
         return 1;
     }
     
-    if ( argc < 3 )
+    if ( argc < 2 )
     {
         print_usage(argv[0]);
+        ToolManager::showHelp(std::cout);
         return 0;
     }
     
-    const char * tileset_file = argv[1];
-    
-    SDL_Surface * tileset = SDL_LoadBMP(tileset_file);
-    if ( ! tileset )
+    vector<string> params;
+    for ( int n = 2; n < argc; n++ )
     {
-        printf("Error loading tileset image file '%s': %s\n", tileset_file, SDL_GetError());
-        return 1;
+        params.push_back(argv[n]);
     }
     
-    SDL_SavePNG(tileset, argv[2]);
-    
-    
-    SDL_FreeSurface(tileset);
+    if ( ToolManager::hasTool(argv[1]) )
+    {
+        ToolManager::runTool(argv[1], params);
+    }
+    else
+    {
+        ToolManager::showHelp(std::cout);
+    }
     
     return 0;
 }

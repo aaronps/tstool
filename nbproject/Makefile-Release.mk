@@ -36,6 +36,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/_ext/1235180888/SDL_png.o \
+	${OBJECTDIR}/_ext/1235180888/TSTool_bmp2png.o \
+	${OBJECTDIR}/_ext/1235180888/ToolManager.o \
 	${OBJECTDIR}/_ext/1235180888/tstool.o
 
 
@@ -66,6 +68,16 @@ ${OBJECTDIR}/_ext/1235180888/SDL_png.o: /D/prog/tstool/src/SDL_png.c
 	${MKDIR} -p ${OBJECTDIR}/_ext/1235180888
 	${RM} $@.d
 	$(COMPILE.c) -O2 -I/D/MinGW/include/SDL -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1235180888/SDL_png.o /D/prog/tstool/src/SDL_png.c
+
+${OBJECTDIR}/_ext/1235180888/TSTool_bmp2png.o: /D/prog/tstool/src/TSTool_bmp2png.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1235180888
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I/D/MinGW/include/SDL -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1235180888/TSTool_bmp2png.o /D/prog/tstool/src/TSTool_bmp2png.cpp
+
+${OBJECTDIR}/_ext/1235180888/ToolManager.o: /D/prog/tstool/src/ToolManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1235180888
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I/D/MinGW/include/SDL -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1235180888/ToolManager.o /D/prog/tstool/src/ToolManager.cpp
 
 ${OBJECTDIR}/_ext/1235180888/tstool.o: /D/prog/tstool/src/tstool.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1235180888
