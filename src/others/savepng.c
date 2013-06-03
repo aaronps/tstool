@@ -5,7 +5,7 @@
  * http://www.libpng.org/pub/png/src/libpng-LICENSE.txt
  * This file comes from: https://github.com/driedfruit/SDL_SavePNG
  */
-#include <SDL.h>
+#include "SDL.h"
 #include <png.h>
 
 #define SUCCESS 0

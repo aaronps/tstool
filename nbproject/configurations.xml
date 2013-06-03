@@ -14,6 +14,7 @@
                    projectFiles="true">
       <logicalFolder name="others" displayName="others" projectFiles="true">
         <itemPath>D:/prog/tstool/src/others/IMG_png.c</itemPath>
+        <itemPath>D:/prog/tstool/src/others/IMG_png.h</itemPath>
         <itemPath>D:/prog/tstool/src/others/savepng.c</itemPath>
         <itemPath>D:/prog/tstool/src/others/savepng.h</itemPath>
       </logicalFolder>
@@ -64,6 +65,11 @@
             tool="0"
             flavor2="0">
       </item>
+      <item path="D:/prog/tstool/src/others/IMG_png.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="D:/prog/tstool/src/others/savepng.c"
             ex="false"
             tool="0"
@@ -111,6 +117,11 @@
       <item path="D:/prog/tstool/src/others/IMG_png.c"
             ex="false"
             tool="0"
+            flavor2="0">
+      </item>
+      <item path="D:/prog/tstool/src/others/IMG_png.h"
+            ex="false"
+            tool="3"
             flavor2="0">
       </item>
       <item path="D:/prog/tstool/src/others/savepng.c"
