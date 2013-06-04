@@ -75,6 +75,8 @@ bool ToolManager::runTool(const std::string& name,
         TSTool * tool = i->second.factory();
         
         tool->run(params);
+        
+        delete tool;
         return true;
     }
     

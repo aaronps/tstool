@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/_ext/1235180888/SDL_png.o \
 	${OBJECTDIR}/_ext/1235180888/TSTool_bmp2png.o \
+	${OBJECTDIR}/_ext/1235180888/TSTool_extract.o \
 	${OBJECTDIR}/_ext/1235180888/TSTool_netpanzer2png.o \
 	${OBJECTDIR}/_ext/1235180888/ToolManager.o \
 	${OBJECTDIR}/_ext/1235180888/tstool.o
@@ -74,6 +75,11 @@ ${OBJECTDIR}/_ext/1235180888/TSTool_bmp2png.o: /D/prog/tstool/src/TSTool_bmp2png
 	${MKDIR} -p ${OBJECTDIR}/_ext/1235180888
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -I/D/MinGW/include/SDL -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1235180888/TSTool_bmp2png.o /D/prog/tstool/src/TSTool_bmp2png.cpp
+
+${OBJECTDIR}/_ext/1235180888/TSTool_extract.o: /D/prog/tstool/src/TSTool_extract.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1235180888
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I/D/MinGW/include/SDL -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1235180888/TSTool_extract.o /D/prog/tstool/src/TSTool_extract.cpp
 
 ${OBJECTDIR}/_ext/1235180888/TSTool_netpanzer2png.o: /D/prog/tstool/src/TSTool_netpanzer2png.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1235180888
