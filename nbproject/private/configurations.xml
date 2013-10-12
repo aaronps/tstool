@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="88">
+<configurationDescriptor version="89">
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug" type="1">
@@ -29,8 +29,9 @@
           <runcommandpicklistitem>"${OUTPUT_PATH}" base.bmp</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" base.bmp dest.png</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" bmp2png base.bmp dest.png</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" deletetiles ppp 61</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}" bmp2png base.bmp dest.png</runcommand>
+        <runcommand>"${OUTPUT_PATH}" deletetiles ppp 61</runcommand>
         <rundir></rundir>
         <buildfirst>true</buildfirst>
         <terminal-type>0</terminal-type>

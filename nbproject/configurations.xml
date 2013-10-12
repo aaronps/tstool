@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="88">
+<configurationDescriptor version="89">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -12,15 +12,24 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>D:/prog/tstool/src/SDL_png.c</itemPath>
-      <itemPath>D:/prog/tstool/src/SDL_png.h</itemPath>
-      <itemPath>D:/prog/tstool/src/TSTool.hpp</itemPath>
-      <itemPath>D:/prog/tstool/src/TSTool_bmp2png.cpp</itemPath>
-      <itemPath>D:/prog/tstool/src/TSTool_extract.cpp</itemPath>
-      <itemPath>D:/prog/tstool/src/TSTool_netpanzer2png.cpp</itemPath>
-      <itemPath>D:/prog/tstool/src/ToolManager.cpp</itemPath>
-      <itemPath>D:/prog/tstool/src/ToolManager.hpp</itemPath>
-      <itemPath>D:/prog/tstool/src/tstool.cpp</itemPath>
+      <itemPath>C:/prog/c++/tstool/src/EndianStream.hpp</itemPath>
+      <itemPath>C:/prog/c++/tstool/src/SDL_png.c</itemPath>
+      <itemPath>C:/prog/c++/tstool/src/SDL_png.h</itemPath>
+      <itemPath>C:/prog/c++/tstool/src/TSTool.hpp</itemPath>
+      <itemPath>C:/prog/c++/tstool/src/TSTool_bmp2png.cpp</itemPath>
+      <itemPath>C:/prog/c++/tstool/src/TSTool_comparetiles.cpp</itemPath>
+      <itemPath>C:/prog/c++/tstool/src/TSTool_converter.cpp</itemPath>
+      <itemPath>C:/prog/c++/tstool/src/TSTool_deletetiles.cpp</itemPath>
+      <itemPath>C:/prog/c++/tstool/src/TSTool_extract.cpp</itemPath>
+      <itemPath>C:/prog/c++/tstool/src/TSTool_info.cpp</itemPath>
+      <itemPath>C:/prog/c++/tstool/src/Tileset.cpp</itemPath>
+      <itemPath>C:/prog/c++/tstool/src/Tileset.hpp</itemPath>
+      <itemPath>C:/prog/c++/tstool/src/ToolManager.cpp</itemPath>
+      <itemPath>C:/prog/c++/tstool/src/ToolManager.hpp</itemPath>
+      <itemPath>C:/prog/c++/tstool/src/json-forwards.h</itemPath>
+      <itemPath>C:/prog/c++/tstool/src/json.h</itemPath>
+      <itemPath>C:/prog/c++/tstool/src/jsoncpp.cpp</itemPath>
+      <itemPath>C:/prog/c++/tstool/src/tstool.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -35,13 +44,12 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>D:\prog\tstool\src</Elem>
+    <Elem>src</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug" type="1">
       <toolsSet>
-        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>default</compilerSet>
         <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
@@ -49,50 +57,88 @@
       <compileType>
         <cTool>
           <incDir>
-            <pElem>D:/MinGW/include/SDL</pElem>
+            <pElem>C:/MinGW/include/SDL</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <incDir>
-            <pElem>D:/MinGW/include/SDL</pElem>
+            <pElem>C:/MinGW/include/SDL</pElem>
           </incDir>
         </ccTool>
         <linkerTool>
           <output>tstool-debug</output>
-          <commandLine>-static-libgcc -static-libstdc++ -lpng -lSDL -lmingw32 -mconsole</commandLine>
+          <commandLine>-static-libgcc -static-libstdc++ -lpng -lz -lSDL -lmingw32 -mconsole</commandLine>
         </linkerTool>
       </compileType>
-      <item path="D:/prog/tstool/src/SDL_png.c" ex="false" tool="0" flavor2="0">
+      <item path="C:/prog/c++/tstool/src/EndianStream.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
-      <item path="D:/prog/tstool/src/SDL_png.h" ex="false" tool="3" flavor2="0">
+      <item path="C:/prog/c++/tstool/src/SDL_png.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="D:/prog/tstool/src/TSTool.hpp" ex="false" tool="3" flavor2="0">
+      <item path="C:/prog/c++/tstool/src/SDL_png.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="D:/prog/tstool/src/TSTool_bmp2png.cpp"
+      <item path="C:/prog/c++/tstool/src/TSTool.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="C:/prog/c++/tstool/src/TSTool_bmp2png.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="D:/prog/tstool/src/TSTool_extract.cpp"
+      <item path="C:/prog/c++/tstool/src/TSTool_comparetiles.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="D:/prog/tstool/src/TSTool_netpanzer2png.cpp"
+      <item path="C:/prog/c++/tstool/src/TSTool_converter.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="D:/prog/tstool/src/ToolManager.cpp" ex="false" tool="1" flavor2="0">
+      <item path="C:/prog/c++/tstool/src/TSTool_deletetiles.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
-      <item path="D:/prog/tstool/src/ToolManager.hpp" ex="false" tool="3" flavor2="0">
+      <item path="C:/prog/c++/tstool/src/TSTool_extract.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
-      <item path="D:/prog/tstool/src/tstool.cpp" ex="false" tool="1" flavor2="0">
+      <item path="C:/prog/c++/tstool/src/TSTool_info.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="C:/prog/c++/tstool/src/Tileset.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="C:/prog/c++/tstool/src/Tileset.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="C:/prog/c++/tstool/src/ToolManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="C:/prog/c++/tstool/src/ToolManager.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="C:/prog/c++/tstool/src/json-forwards.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="C:/prog/c++/tstool/src/json.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="C:/prog/c++/tstool/src/jsoncpp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="C:/prog/c++/tstool/src/tstool.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
       <toolsSet>
-        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
         <compilerSet>default</compilerSet>
         <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
@@ -101,13 +147,13 @@
         <cTool>
           <developmentMode>5</developmentMode>
           <incDir>
-            <pElem>D:/MinGW/include/SDL</pElem>
+            <pElem>C:/MinGW/include/SDL</pElem>
           </incDir>
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
           <incDir>
-            <pElem>D:/MinGW/include/SDL</pElem>
+            <pElem>C:/MinGW/include/SDL</pElem>
           </incDir>
         </ccTool>
         <fortranCompilerTool>
@@ -118,35 +164,74 @@
         </asmTool>
         <linkerTool>
           <output>tstool</output>
-          <commandLine>-static-libgcc -static-libstdc++ -lSDL_image -lSDL -lmingw32 -mconsole</commandLine>
+          <commandLine>-static-libgcc -static-libstdc++ -lpng -lz -lSDL -lmingw32 -mconsole</commandLine>
         </linkerTool>
       </compileType>
-      <item path="D:/prog/tstool/src/SDL_png.c" ex="false" tool="0" flavor2="0">
+      <item path="C:/prog/c++/tstool/src/EndianStream.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
-      <item path="D:/prog/tstool/src/SDL_png.h" ex="false" tool="3" flavor2="0">
+      <item path="C:/prog/c++/tstool/src/SDL_png.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="D:/prog/tstool/src/TSTool.hpp" ex="false" tool="3" flavor2="0">
+      <item path="C:/prog/c++/tstool/src/SDL_png.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="D:/prog/tstool/src/TSTool_bmp2png.cpp"
+      <item path="C:/prog/c++/tstool/src/TSTool.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="C:/prog/c++/tstool/src/TSTool_bmp2png.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="D:/prog/tstool/src/TSTool_extract.cpp"
+      <item path="C:/prog/c++/tstool/src/TSTool_comparetiles.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="D:/prog/tstool/src/TSTool_netpanzer2png.cpp"
+      <item path="C:/prog/c++/tstool/src/TSTool_converter.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="D:/prog/tstool/src/ToolManager.cpp" ex="false" tool="1" flavor2="0">
+      <item path="C:/prog/c++/tstool/src/TSTool_deletetiles.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
-      <item path="D:/prog/tstool/src/ToolManager.hpp" ex="false" tool="3" flavor2="0">
+      <item path="C:/prog/c++/tstool/src/TSTool_extract.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
       </item>
-      <item path="D:/prog/tstool/src/tstool.cpp" ex="false" tool="1" flavor2="0">
+      <item path="C:/prog/c++/tstool/src/TSTool_info.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="C:/prog/c++/tstool/src/Tileset.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="C:/prog/c++/tstool/src/Tileset.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="C:/prog/c++/tstool/src/ToolManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="C:/prog/c++/tstool/src/ToolManager.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="C:/prog/c++/tstool/src/json-forwards.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="C:/prog/c++/tstool/src/json.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="C:/prog/c++/tstool/src/jsoncpp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="C:/prog/c++/tstool/src/tstool.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>
