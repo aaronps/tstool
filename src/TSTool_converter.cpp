@@ -14,12 +14,14 @@ public:
     {
         if ( params.size() < 3 )
         {
-            std::cout << "Use: netpanzer2new <tileset.tls> <palette.act> <destination_without_extension>\n";
+            std::cout << "Use: netpanzer2new <tileset.tls> <palette.act> <destination_without_extension> [tiles_per_row=40]\n";
             return;
         }
         
+        int tpr = params.size() > 3 ? atoi(params[3].c_str()) : 40;
+        
         Tileset ts;
-        ts.loadNetPanzer(params[0], params[1], 40);
+        ts.loadNetPanzer(params[0], params[1], tpr);
         
         ts.save(params[2]);
     }

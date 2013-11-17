@@ -17,7 +17,10 @@ class Tileset
 {
 public:
     Tileset();
+    Tileset(const std::string& header_text, const unsigned tile_w, const unsigned tile_h);
     ~Tileset();
+    
+    Tileset * subTileset(const std::string& header, const unsigned first, const unsigned count, const unsigned tiles_per_row) const;
     
     bool loadNetPanzer( const std::string& tlsname,
                         const std::string& actname,
@@ -48,13 +51,18 @@ public:
     
     void deleteTiles(const unsigned index, const unsigned count);
     
-    void blitTile(const unsigned index, const int x, const int y, SDL_Surface *dest);
+    void blitTile(const unsigned index, const int x, const int y, SDL_Surface *dest) const;
+    
+    bool appendTilesFrom(const Tileset& other, const unsigned tiles_per_row = 40);
     
 private:
     Tileset(const Tileset&);
     void operator=(const Tileset&);
     
     void clear();
+    bool saveNiceJSon(const std::string& name) const;
+    bool saveOnelinerJSon(const std::string& name) const;
+    uint32_t calculateAverageTileColor(const unsigned index) const;
     
     struct Attribute
     {

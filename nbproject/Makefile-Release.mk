@@ -45,7 +45,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1869484693/Tileset.o \
 	${OBJECTDIR}/_ext/1869484693/ToolManager.o \
 	${OBJECTDIR}/_ext/1869484693/jsoncpp.o \
-	${OBJECTDIR}/_ext/1869484693/tstool.o
+	${OBJECTDIR}/_ext/1869484693/tstool.o \
+	${OBJECTDIR}/src/TSTool_append.o \
+	${OBJECTDIR}/src/TSTool_newtileset.o
 
 
 # C Compiler Flags
@@ -125,6 +127,16 @@ ${OBJECTDIR}/_ext/1869484693/tstool.o: /C/prog/c++/tstool/src/tstool.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/1869484693
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -I/C/MinGW/include/SDL -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1869484693/tstool.o /C/prog/c++/tstool/src/tstool.cpp
+
+${OBJECTDIR}/src/TSTool_append.o: src/TSTool_append.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I/C/MinGW/include/SDL -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/TSTool_append.o src/TSTool_append.cpp
+
+${OBJECTDIR}/src/TSTool_newtileset.o: src/TSTool_newtileset.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -I/C/MinGW/include/SDL -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/TSTool_newtileset.o src/TSTool_newtileset.cpp
 
 # Subprojects
 .build-subprojects:

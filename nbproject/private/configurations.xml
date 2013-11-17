@@ -30,8 +30,11 @@
           <runcommandpicklistitem>"${OUTPUT_PATH}" base.bmp dest.png</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" bmp2png base.bmp dest.png</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" deletetiles ppp 61</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" new elmio2 "someothertest" data\Trees_01 40</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" append summercopy data\House_05</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" append summercopy data\House_04</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}" deletetiles ppp 61</runcommand>
+        <runcommand>"${OUTPUT_PATH}" append summercopy data\House_04</runcommand>
         <rundir></rundir>
         <buildfirst>true</buildfirst>
         <terminal-type>0</terminal-type>
@@ -63,9 +66,11 @@
       <runprofile version="9">
         <runcommandpicklist>
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" new elmio2 "someothertest" </runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" new elmio2 "someothertest" data\Trees_01 40</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}"</runcommand>
-        <rundir>D:\prog\tstool\.</rundir>
+        <runcommand>"${OUTPUT_PATH}" new elmio2 "someothertest" data\Trees_01 40</runcommand>
+        <rundir></rundir>
         <buildfirst>true</buildfirst>
         <terminal-type>0</terminal-type>
         <remove-instrumentation>0</remove-instrumentation>

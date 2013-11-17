@@ -1,5 +1,6 @@
 #include "Tileset.hpp"
 
+#include <cstdio>
 #include <fstream>
 #include <algorithm>
 #include <basetyps.h>
@@ -11,15 +12,88 @@
 
 #include "json.h"
 
+static SDL_Surface * createImageFromFormat( const int w,
+                                            const int h,
+                                            const SDL_PixelFormat * format )
+{
+    SDL_Surface * s = SDL_CreateRGBSurface( SDL_SWSURFACE,
+                                            w, h,
+                                            format->BitsPerPixel,
+                                            format->Rmask,
+                                            format->Gmask,
+                                            format->Bmask,
+                                            format->Amask);
+    
+    if ( format->palette )
+    {
+        SDL_SetColors(s, format->palette->colors, 0, format->palette->ncolors);
+    }
+    
+    SDL_FillRect(s, 0, 0);
+    
+    return s;
+}
+
 Tileset::Tileset()
 {
     _image = 0;
     clear();
 }
 
+Tileset::Tileset(const std::string& header_text, const unsigned tile_w, const unsigned tile_h)
+{
+    _image = 0;
+    clear();
+    _header = header_text;
+    _tile_width = tile_w;
+    _tile_height = tile_h;
+//    _version = 0;
+}
+
 Tileset::~Tileset()
 {
     clear();
+}
+
+Tileset * Tileset::subTileset( const std::string& header,
+                               const unsigned first,
+                               const unsigned count,
+                               const unsigned tiles_per_row) const
+{
+    if ( first > _tile_count || (first + count) > _tile_count || ! _image )
+    {
+        return 0;
+    }
+    
+    Tileset * ts = new Tileset(header, _tile_width, _tile_height);
+    
+    const int picw = tiles_per_row * _tile_width;
+    int rows = count/tiles_per_row;
+    if ( count % tiles_per_row )
+        rows++;
+    const int pich = rows * _tile_height;
+    
+    
+    SDL_Surface * img = createImageFromFormat( picw, pich, _image->format );
+    
+    int dx = 0, dy = 0;
+    
+    for ( unsigned ctile = first, ltile = first + count; ctile < ltile; ctile++ )
+    {
+        ts->_attributes.push_back(_attributes[ctile]);
+        blitTile(ctile, dx, dy, img);
+        dx += _tile_width;
+        if ( dx >= img->w )
+        {
+            dx = 0;
+            dy += _tile_height;
+        }
+    }
+    
+    ts->_image = img;
+    ts->_tile_count = count;
+    ts->_version = 0;
+    return ts;
 }
 
 void Tileset::clear()
@@ -191,6 +265,64 @@ void Tileset::saveNetPanzer(const std::string& tlsname,
 
 void Tileset::save(const std::string& basename)
 {
+    saveNiceJSon(basename+ ".json");
+    
+    if ( _image )
+    {
+        SDL_SavePNG(this->_image, (basename + ".png").c_str());
+    }
+}
+
+bool Tileset::saveNiceJSon(const std::string& name) const
+{
+    FILE *f = fopen(name.c_str(), "w");
+    if ( !f )
+        return false;
+    
+    fprintf(f, "{\n\t\"idheader\": \"%s\",\n", _header.c_str());
+    fprintf(f, "\t\"version\": %u,\n", _version);
+    fprintf(f, "\t\"tile_width\": %u,\n", _tile_width);
+    fprintf(f, "\t\"tile_height\": %u,\n", _tile_height);
+    fprintf(f, "\t\"tile_count\": %u", _tile_count);
+    
+    if ( _tile_count )
+    {
+        const int tiles_per_row = _image->w / _tile_width;
+        fprintf(f, ",\n\t\"move\": [\n\t\t%3d", _attributes[0].move_value);
+        for ( int n = 1; n < _tile_count; n++ )
+        {
+            if ( (n % tiles_per_row) == 0 )
+            {
+                fprintf(f, ",\n\t\t%3d", _attributes[n].move_value );
+            }
+            else
+            {
+                fprintf(f, ",%3d", _attributes[n].move_value);
+            }
+        }
+        fprintf(f, "\n\t],\n\t\"color\": [\n\t\t%3d", _attributes[0].average_color);
+        for ( int n = 1; n < _tile_count; n++ )
+        {
+            if ( (n % tiles_per_row) == 0 )
+            {
+                fprintf(f, ",\n\t\t%3d", _attributes[n].average_color );
+            }
+            else
+            {
+                fprintf(f, ",%3d", _attributes[n].average_color);
+            }
+        }
+        fprintf(f, "\n\t]");
+    }
+    
+    fprintf(f, "\n}");
+    fclose(f);
+    return true;
+}
+
+// XXX currently unused
+bool Tileset::saveOnelinerJSon(const std::string& name) const
+{
     Json::Value root(Json::objectValue);
     root["idheader"] = _header;
     root["tile_count"] = _tile_count;
@@ -215,11 +347,14 @@ void Tileset::save(const std::string& basename)
     root["color"] = avgcolor;
     
     Json::FastWriter writer;
-    std::ofstream out( (basename+ ".json").c_str());
-    out << writer.write(root);
-    out.close();
-    
-    SDL_SavePNG(this->_image, (basename + ".png").c_str());
+    std::ofstream out( name.c_str() );
+    if ( out.is_open() )
+    {
+        out << writer.write(root);
+        out.close();
+        return true;
+    }
+    return false;
 }
 
 bool Tileset::load(const std::string& basename)
@@ -299,32 +434,10 @@ bool Tileset::load(const std::string& basename)
     return true;
 }
 
-static SDL_Surface * createImageFromFormat( const int w,
-                                            const int h,
-                                            const SDL_PixelFormat * format )
-{
-    SDL_Surface * s = SDL_CreateRGBSurface( SDL_SWSURFACE,
-                                            w, h,
-                                            format->BitsPerPixel,
-                                            format->Rmask,
-                                            format->Gmask,
-                                            format->Bmask,
-                                            format->Amask);
-    
-    if ( format->palette )
-    {
-        SDL_SetColors(s, format->palette->colors, 0, format->palette->ncolors);
-    }
-    
-    SDL_FillRect(s, 0, 0);
-    
-    return s;
-}
-
 void Tileset::blitTile( const unsigned index,
                         const int x,
                         const int y,
-                        SDL_Surface* dest )
+                        SDL_Surface* dest ) const
 {
     if ( index >= _tile_count )
     {
@@ -410,4 +523,157 @@ void Tileset::deleteTiles(const unsigned index, const unsigned count)
     _image = surf;
     SDL_FreeSurface(ss);
     
+}
+
+
+uint32_t Tileset::calculateAverageTileColor(const unsigned index) const
+{
+    uint32_t color = 0;
+    if ( (index < _tile_count) && (_image->format->BitsPerPixel == 8) )
+    {
+        const unsigned tiles_per_row = _image->w / _tile_width;
+        const unsigned tile_row = index / tiles_per_row;
+        const unsigned tile_col = index % tiles_per_row;
+        
+        int start_y = tile_row * _tile_height;
+        int start_x = tile_col * _tile_width;
+        int end_y = start_y + _tile_height;
+        int end_x = start_x + _tile_width;
+        
+        int avgR = 0;
+        int avgG = 0;
+        int avgB = 0;
+
+        SDL_Color * colors = _image->format->palette->colors;
+        
+        // Go through a single cTile and get all the additive color values.
+        for (unsigned int y = start_y; y < end_y; y++)
+        {
+            uint8_t * ptr = reinterpret_cast<uint8_t*>(_image->pixels);
+            ptr = &ptr[start_y * _image->pitch + start_x * _image->format->BytesPerPixel];
+            for (unsigned int x = 0; x < _tile_width; x++)
+            {
+                uint8_t idx = ptr[x];
+                avgR += colors[idx].r;
+                avgG += colors[idx].g;
+                avgB += colors[idx].b;
+            }
+        }
+
+        // Divide each individual amount by the number of bytes in the image.
+        const int numPix = _tile_width * _tile_height;
+
+        avgR /= numPix;
+        avgG /= numPix;
+        avgB /= numPix;
+        
+        int   bestDist = 10000000;
+
+        for (int i = 0; i < 256; i++)
+        {
+            int dr = colors[i].r-avgR;
+            int dg = colors[i].g-avgG;
+            int db = colors[i].b-avgB;
+            int dist = (dr * dr) + (dg * dg) + (db * db);
+
+            if (dist < bestDist)
+            {
+                bestDist = dist;
+                color = i;
+            }
+        }
+    }
+    
+    return color;
+}
+
+bool Tileset::appendTilesFrom(const Tileset& other, const unsigned tiles_per_row)
+{
+    if ( ! other.tile_count() )
+    {
+        std::cout << "No tiles copied, the other tileset doesn't have tiles";
+        return false;
+    }
+    
+    if ( other.tile_width() != _tile_width )
+    {
+        std::cout << "No tiles copied, the other tileset tile width different from mine";
+        return false;
+    }
+    
+    if ( other.tile_height() != _tile_height )
+    {
+        std::cout << "No tiles copied, the other tileset tile height different from mine";
+        return false;
+    }
+    
+    if ( ! _tile_count )
+    {
+        const int picw = tiles_per_row * _tile_width;
+        int rows = other.tile_count()/tiles_per_row;
+        if ( other.tile_count() % tiles_per_row )
+            rows++;
+        const int pich = rows * _tile_height;
+        
+        _image = createImageFromFormat( picw, pich, other.image()->format );
+    }
+    
+    const unsigned total_after_tiles = tile_count() + other.tile_count();
+    const int image_tpr = _image->w / _tile_width;
+    {
+        const int image_rows = _image->h / _tile_height;
+        
+        const int image_can_hold = image_rows * image_tpr;
+        if ( image_can_hold < total_after_tiles )
+        {
+            // need to resize;
+            const int extra_tiles = total_after_tiles - image_can_hold;
+            int extra_rows = extra_tiles / image_tpr;
+            if ( extra_tiles % image_tpr )
+                extra_rows++;
+            
+            const int new_height = _image->h + (extra_rows * _tile_height);
+            SDL_Surface * img = createImageFromFormat(_image->w, new_height, _image->format);
+            SDL_FillRect(img, 0, 0);
+            
+            SDL_Rect r = { 0, 0, 0, 0 };
+            SDL_BlitSurface(_image, 0, img, &r);
+            
+            SDL_FreeSurface(_image);
+            _image = img;
+            
+        }
+    }
+    
+    int dy = (tile_count() / image_tpr) * _tile_height;
+    int dx = (tile_count() % image_tpr) * _tile_width;
+    
+    
+    for ( unsigned n = 0; n < other.tile_count(); n++ )
+    {
+        other.blitTile(n, dx, dy, _image);
+        _tile_count++;
+        
+        // @todo calculate average color
+        
+        uint32_t avg_color = calculateAverageTileColor(_tile_count-1);
+        
+        // @todo add tile attributes with original move and calculated avg color
+        _attributes.push_back(Attribute(other.tile_move(n), avg_color));
+        
+        dx += _tile_width;
+        if ( dx >= _image->w )
+        {
+            dx = 0;
+            dy += _tile_height;
+        }
+    }
+    
+//    _tile_count += other.tile_count();
+    if ( _version == 0 )
+    {
+        _version = 1;
+    }
+    
+    return true;
 }
