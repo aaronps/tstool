@@ -44,7 +44,7 @@ void print_usage(const char * exe_name)
  */
 int main(int argc, char** argv)
 {
-    printf("TileSet Tool 0.2\n");
+    printf("TileSet Tool 0.3\n");
     if ( ! miniSDLInit() )
     {
         printf("Error initializing SDL\n");

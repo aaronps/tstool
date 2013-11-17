@@ -47,6 +47,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1869484693/jsoncpp.o \
 	${OBJECTDIR}/_ext/1869484693/tstool.o \
 	${OBJECTDIR}/src/TSTool_append.o \
+	${OBJECTDIR}/src/TSTool_mapconverter.o \
 	${OBJECTDIR}/src/TSTool_newtileset.o
 
 
@@ -132,6 +133,11 @@ ${OBJECTDIR}/src/TSTool_append.o: src/TSTool_append.cpp
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
 	$(COMPILE.cc) -g -I/C/MinGW/include/SDL -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/TSTool_append.o src/TSTool_append.cpp
+
+${OBJECTDIR}/src/TSTool_mapconverter.o: src/TSTool_mapconverter.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} $@.d
+	$(COMPILE.cc) -g -I/C/MinGW/include/SDL -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/TSTool_mapconverter.o src/TSTool_mapconverter.cpp
 
 ${OBJECTDIR}/src/TSTool_newtileset.o: src/TSTool_newtileset.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src

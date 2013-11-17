@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="89">
+<configurationDescriptor version="90">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -23,6 +23,7 @@
       <itemPath>C:/prog/c++/tstool/src/TSTool_deletetiles.cpp</itemPath>
       <itemPath>C:/prog/c++/tstool/src/TSTool_extract.cpp</itemPath>
       <itemPath>C:/prog/c++/tstool/src/TSTool_info.cpp</itemPath>
+      <itemPath>src/TSTool_mapconverter.cpp</itemPath>
       <itemPath>src/TSTool_newtileset.cpp</itemPath>
       <itemPath>C:/prog/c++/tstool/src/Tileset.cpp</itemPath>
       <itemPath>C:/prog/c++/tstool/src/Tileset.hpp</itemPath>
@@ -140,6 +141,8 @@
       </item>
       <item path="src/TSTool_append.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="src/TSTool_mapconverter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
       <item path="src/TSTool_newtileset.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -240,6 +243,8 @@
       <item path="C:/prog/c++/tstool/src/tstool.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TSTool_append.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="src/TSTool_mapconverter.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="src/TSTool_newtileset.cpp" ex="false" tool="1" flavor2="0">
       </item>
